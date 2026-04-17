@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Melissa Beatriz</title>
+    <style>
+        /* Importación de fuentes románticas de Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;400;600&display=swap');
+
+        body {
+            background-color: #fff5f7; /* Rosa pálido muy suave de fondo */
+            margin: 0;
+            padding: 40px 0; /* Espaciado superior e inferior */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden; /* Evita el desplazamiento horizontal */
+        }
+
+        /* Contenedor principal del mensaje */
+        .container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(255, 182, 193, 0.4);
+            text-align: center;
+            max-width: 600px;
+            width: 90%;
+            position: relative;
+            z-index: 1; /* Por encima de los corazones flotantes */
+            border: 2px solid #ffdae0;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            color: #ff85a2; /* Rosa suave acentuado */
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            color: #ffb1c1;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        p {
+            color: #666;
+            line-height: 1.8;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        /* Estilo para resaltar "PORQUE TE AMO" */
+        b {
+            color: #ff85a2;
+            font-weight: 600;
+        }
+
+        /* Estilo de la firma */
+        .signature {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            color: #ff85a2;
+            margin-top: 20px;
+        }
+
+        /* Galería de las 4 Imágenes Pequeñas */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            max-width: 600px;
+            width: 90%;
+            z-index: 1;
+            margin-bottom: 30px; /* Espacio antes de la nueva sección */
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 200px; /* Altura fija para la cuadrícula */
+            object-fit: cover; /* Recorta la imagen para llenar el espacio sin deformar */
+            border-radius: 15px;
+            border: 4px solid white;
+            box-shadow: 0 5px 15px rgba(255, 182, 193, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        /* Efecto al pasar el ratón sobre las fotos pequeñas */
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        /* --- Estilos para la sección "Yo cuando te veo" --- */
+        .reaction-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(255, 182, 193, 0.3);
+            text-align: center;
+            max-width: 600px;
+            width: 90%;
+            border: 2px solid #ffdae0;
+            margin-bottom: 30px;
+            z-index: 1;
+        }
+
+        .reaction-text {
+            color: #ff85a2;
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .reaction-image {
+            width: 100%; /* Ocupa el ancho del contenedor */
+            max-width: 300px; /* Pero no más de 300px para que sea "normal" */
+            height: auto; /* Mantiene la proporción */
+            border-radius: 15px;
+            border: 4px solid white;
+            box-shadow: 0 5px 15px rgba(255, 182, 193, 0.3);
+        }
+
+        /* --- Estilos para la Imagen Final GRANDE --- */
+        .final-image-container {
+            max-width: 800px; /* Más ancho que el mensaje y la galería */
+            width: 95%;
+            z-index: 1;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+
+        .final-image {
+            width: 100%; /* Ocupa todo el ancho de su contenedor (hasta 800px) */
+            height: auto; /* Mantiene la proporción original de la imagen */
+            border-radius: 20px;
+            border: 6px solid white; /* Borde un poco más grueso */
+            box-shadow: 0 10px 30px rgba(255, 182, 193, 0.5); /* Sombra más pronunciada */
+        }
+
+        /* Corazoncitos flotantes animados 🩷 */
+        .heart {
+            position: fixed;
+            font-size: 24px;
+            user-select: none;
+            z-index: 0;
+            animation: float 6s linear infinite;
+        }
+
+        /* Animación de los corazones */
+        @keyframes float {
+            0% { transform: translateY(110vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Separadores decorativos con emojis */
+        .decoration {
+            font-size: 2rem;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <script>
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '🩷'; // El emoji que pediste
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 3 + 's'; // Velocidad variable
+            heart.style.opacity = Math.random() * 0.7 + 0.3; // Opacidad variable
+            document.body.appendChild(heart);
+
+            // Eliminar el corazón después de que termine la animación
+            setTimeout(() => {
+                heart.remove();
+            }, 6000);
+        }
+        // Crear un corazón nuevo cada 400ms
+        setInterval(createHeart, 400);
+    </script>
+
+    <div class="container">
+        <div class="decoration">🩷🩷🩷</div>
+        <h1>Mi amor hacia ti, Melissa</h1>
+        
+        <h2>Melissa BEATRIZ</h2>
+        
+        <p>
+            Te dedico esta página web para que recuerdes todos los momentos lindos que hemos pasado juntos. 
+            Esto lo hago desde el fondo de mi corazón y quiero envejecer contigo; aunque hemos peleado mucho, 
+            me alegra que hayas aparecido en mi vida, <b>PORQUE TE AMO</b>.
+        </p>
+
+        <div class="decoration">✨🩷✨</div>
+        
+        <div class="signature">
+            De todo corazón: Arondy
+        </div>
+    </div>
+
+    <div class="gallery">
+        <img src="https://i.pinimg.com/originals/14/12/a6/1412a602c0cd0027a7c494967a564e7e.gif" alt="Hello Kitty 1">
+        <img src="https://i.pinimg.com/originals/15/3c/59/153c59185cc57bf81b69c4a0e692eaae.gif" alt="Hello Kitty 2">
+        <img src="https://i.ibb.co/wZqyXnxm/41b6d6e7-9494-47cd-a301-eaba12e4c9e6.jpg" alt="Hello Kitty 3">
+        <img src="https://i.ibb.co/dwHV7tPB/Whats-App-Image-2026-04-17-at-15-29-41.jpg" alt="Hello Kitty 4">
+    </div>
+
+    <div class="reaction-container">
+        <div class="reaction-text">Yo cuando te veo:</div>
+        <img src="https://media.tenor.com/yYk47OuxLI0AAAAM/cat-tail-meme.gif" alt="Hello Kitty enamorada" class="reaction-image">
+    </div>
+
+    <div class="final-image-container">
+        <img src="https://i.ibb.co/xK8xLBVS/e5040509-9690-4488-92ba-a8c79b287687.jpg" alt="Hello Kitty Grande y Romántica" class="final-image">
+    </div>
+
+</body>
+</html>
